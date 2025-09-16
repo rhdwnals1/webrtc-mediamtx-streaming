@@ -5,8 +5,6 @@ import "./global.css";
 type Item = {
   id: string;
   url: string;
-  type: "youtube" | "webrtc";
-  name?: string;
 };
 
 const ITEMS: Item[] = [
@@ -14,202 +12,133 @@ const ITEMS: Item[] = [
   {
     id: "1",
     url: "https://www.youtube.com/embed/-JhoMGoAfFc?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 1",
   },
   // WebRTC 스트림 예시 (MediaMTX)
   {
     id: "webrtc-1",
     url: "wss://your-mediamtx-server:8889/stream1",
-    type: "webrtc",
-    name: "WebRTC Stream 1",
   },
   {
     id: "webrtc-2",
     url: "wss://your-mediamtx-server:8889/stream2",
-    type: "webrtc",
-    name: "WebRTC Stream 2",
   },
   {
     id: "2",
     url: "https://www.youtube.com/embed/-u536iqt-Pk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 2",
   },
   {
     id: "3",
     url: "https://www.youtube.com/embed/jF8-FvIj4-E?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 3",
   },
   {
     id: "4",
     url: "https://www.youtube.com/embed/zuWxsbV-mlA?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 4",
   },
   {
     id: "5",
     url: "https://www.youtube.com/embed/jvz52e_gBFk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 5",
   },
   {
     id: "6",
     url: "https://www.youtube.com/embed/VzJdt74dAEk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 6",
   },
   {
     id: "7",
     url: "https://www.youtube.com/embed/jF8-FvIj4-E?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 7",
   },
   {
     id: "8",
     url: "https://www.youtube.com/embed/-u536iqt-Pk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 8",
   },
   {
     id: "9",
     url: "https://www.youtube.com/embed/-JhoMGoAfFc?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 9",
   },
   {
     id: "10",
     url: "https://www.youtube.com/embed/zuWxsbV-mlA?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 10",
   },
   {
     id: "11",
     url: "https://www.youtube.com/embed/jvz52e_gBFk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 11",
   },
   {
     id: "12",
     url: "https://www.youtube.com/embed/VzJdt74dAEk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 12",
   },
   {
     id: "13",
     url: "https://www.youtube.com/embed/jF8-FvIj4-E?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 13",
   },
   {
     id: "14",
     url: "https://www.youtube.com/embed/-u536iqt-Pk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 14",
   },
   {
     id: "15",
     url: "https://www.youtube.com/embed/-JhoMGoAfFc?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 15",
   },
   {
     id: "16",
     url: "https://www.youtube.com/embed/zuWxsbV-mlA?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 16",
   },
   {
     id: "17",
     url: "https://www.youtube.com/embed/jvz52e_gBFk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 17",
   },
   {
     id: "18",
     url: "https://www.youtube.com/embed/VzJdt74dAEk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 18",
   },
   {
     id: "19",
     url: "https://www.youtube.com/embed/-JhoMGoAfFc?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 19",
   },
   {
     id: "20",
     url: "https://www.youtube.com/embed/zuWxsbV-mlA?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 20",
   },
   {
     id: "21",
     url: "https://www.youtube.com/embed/jvz52e_gBFk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 21",
   },
   {
     id: "22",
     url: "https://www.youtube.com/embed/VzJdt74dAEk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 22",
   },
   {
     id: "23",
     url: "https://www.youtube.com/embed/jF8-FvIj4-E?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 23",
   },
   {
     id: "24",
     url: "https://www.youtube.com/embed/-u536iqt-Pk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 24",
   },
   {
     id: "25",
     url: "https://www.youtube.com/embed/-JhoMGoAfFc?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 25",
   },
   {
     id: "26",
     url: "https://www.youtube.com/embed/zuWxsbV-mlA?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 26",
   },
   {
     id: "27",
     url: "https://www.youtube.com/embed/jvz52e_gBFk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 27",
   },
   {
     id: "28",
     url: "https://www.youtube.com/embed/VzJdt74dAEk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 28",
   },
   {
     id: "29",
     url: "https://www.youtube.com/embed/VzJdt74dAEk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 29",
   },
   {
     id: "30",
     url: "https://www.youtube.com/embed/VzJdt74dAEk?autoplay=1&mute=1&rel=0",
-    type: "youtube",
-    name: "YouTube Stream 30",
   },
 ];
-
-const withYTParams = (u: string) =>
-  `${u}${
-    u.includes("?") ? "&" : "?"
-  }autoplay=1&mute=1&playsinline=1&modestbranding=1&rel=0`;
 
 export default function App() {
   const [now, setNow] = useState(() => new Date());
@@ -253,106 +182,31 @@ export default function App() {
 
       <Grid itemCount={displayItems.length}>
         {displayItems.map((it) => (
-          <Cell key={it.id} item={it} isSingle={displayItems.length === 1} />
+          <Cell key={it.id} src={it.url} isSingle={displayItems.length === 1} />
         ))}
       </Grid>
     </AppContainer>
   );
 }
 
-function Cell({ item, isSingle }: { item: Item; isSingle?: boolean }) {
-  const [loaded, setLoaded] = useState(false);
+function Cell({ src, isSingle }: { src: string; isSingle?: boolean }) {
   const [blocked, setBlocked] = useState(false);
-  const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
-
-  // WebRTC 연결 함수
-  const connectWebRTC = async (videoElement: HTMLVideoElement, url: string) => {
-    try {
-      const pc = new RTCPeerConnection({
-        iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
-      });
-
-      pc.ontrack = (event) => {
-        videoElement.srcObject = event.streams[0];
-        setLoaded(true);
-      };
-
-      // MediaMTX WebRTC 연결
-      const ws = new WebSocket(url);
-
-      ws.onopen = async () => {
-        const offer = await pc.createOffer();
-        await pc.setLocalDescription(offer);
-        ws.send(JSON.stringify({ type: "offer", sdp: offer.sdp }));
-      };
-
-      ws.onmessage = async (event) => {
-        const data = JSON.parse(event.data);
-        if (data.type === "answer") {
-          await pc.setRemoteDescription(new RTCSessionDescription(data));
-        }
-      };
-
-      ws.onerror = () => setBlocked(true);
-    } catch (error) {
-      console.error("WebRTC connection failed:", error);
-      setBlocked(true);
-    }
-  };
-
-  useEffect(() => {
-    if (item.type === "webrtc" && videoRef) {
-      connectWebRTC(videoRef, item.url);
-    }
-  }, [item, videoRef]);
-
-  const renderContent = () => {
-    if (!loaded && !blocked) {
-      return <Loader aria-label="loading" />;
-    }
-
-    if (blocked) {
-      return (
-        <Blocked>
-          <p>
-            🚫 {item.type === "youtube" ? "임베드 차단됨" : "WebRTC 연결 실패"}
-          </p>
-          <small>
-            {item.type === "youtube"
-              ? "공식 임베드 허용 주소로 교체하세요"
-              : "MediaMTX 서버를 확인하세요"}
-          </small>
-        </Blocked>
-      );
-    }
-
-    if (item.type === "youtube") {
-      return (
-        <IFrame
-          src={withYTParams(item.url)}
-          title={item.name || item.url}
-          loading="lazy"
-          onLoad={() => setLoaded(true)}
-          onError={() => setBlocked(true)}
-        />
-      );
-    }
-
-    return (
-      <WebRTCVideo
-        ref={setVideoRef}
-        autoPlay
-        muted
-        playsInline
-        onLoadedData={() => setLoaded(true)}
-        onError={() => setBlocked(true)}
-      />
-    );
-  };
 
   return (
-    <Tile data-loaded={loaded} isSingle={isSingle}>
-      {renderContent()}
+    <Tile isSingle={isSingle}>
+      {!blocked ? (
+        <IFrame
+          src={src}
+          title={src}
+          loading="lazy"
+          onError={() => setBlocked(true)}
+        />
+      ) : (
+        <Blocked>
+          <p>임베트 차단됨</p>
+          <small>공식 임베드 허용 주소로 교체하세요</small>
+        </Blocked>
+      )}
     </Tile>
   );
 }
@@ -576,16 +430,12 @@ const Tile = styled.div<{ isSingle?: boolean }>`
   border-radius: 2px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  min-height: 84px;
+  transition: all 0.2s ease;
 
-  /* 1개일 때는 aspect-ratio 제한 없음 */
-  ${(props) =>
-    !props.isSingle &&
-    `
-    aspect-ratio: 16 / 9;
-  `}
+  &:hover {
+    border-color: rgba(0, 255, 136, 0.3);
+    transform: scale(1.02);
+  }
 
   &[data-loaded="true"] {
     border-color: rgba(0, 255, 136, 0.3);
@@ -603,62 +453,24 @@ const IFrame = styled.iframe.attrs({
   border-radius: 2px;
 `;
 
-const WebRTCVideo = styled.video`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border-radius: 2px;
-`;
-
-const Loader = styled.div`
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  z-index: 2;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border-radius: 2px;
-
-  &::after {
-    content: "";
-    width: 24px;
-    height: 24px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-top-color: #00d4ff;
-    border-right-color: #667eea;
-    border-radius: 50%;
-    animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  }
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-`;
-
 const Blocked = styled.div`
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   text-align: center;
-  padding: 4px;
+  padding: 1rem;
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border-radius: 2px;
-  border: 1px solid rgba(255, 0, 0, 0.2);
 
-  > p {
-    font-weight: 700;
-    margin-bottom: 2px;
+  p {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
     color: #ff6b6b;
-    font-size: 0.6rem;
   }
 
-  > small {
+  small {
+    font-size: 0.8rem;
     color: #888;
-    font-size: 0.5rem;
-    line-height: 1.2;
   }
 `;

@@ -191,16 +191,69 @@ export default function App() {
 
 function Cell({ src, isSingle }: { src: string; isSingle?: boolean }) {
   const [blocked, setBlocked] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // TODO: 유튜브 컨트롤 숨기기 - 임시로 YouTube URL에 컨트롤 숨김 파라미터 추가
+  const getYouTubeUrl = (url: string) => {
+    if (url.includes("youtube.com/embed")) {
+      // 기존 파라미터에 controls=0, showinfo=0, rel=0 추가하여 컨트롤 숨김
+      const separator = url.includes("?") ? "&" : "?";
+      return `${url}${separator}controls=0&showinfo=0&rel=0&modestbranding=1`;
+    }
+    return url;
+  };
+
+  // TODO: 전체화면 상태 감지
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const tile = document.querySelector(
+        `[data-tile-id="${src}"]`
+      ) as HTMLElement;
+      if (tile) {
+        setIsFullscreen(document.fullscreenElement === tile);
+      }
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () =>
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, [src]);
+
+  const handleFullscreen = () => {
+    const tile = document.querySelector(
+      `[data-tile-id="${src}"]`
+    ) as HTMLElement;
+    if (tile) {
+      if (tile.requestFullscreen) {
+        tile.requestFullscreen();
+      }
+    }
+  };
 
   return (
-    <Tile isSingle={isSingle}>
+    <Tile
+      isSingle={isSingle}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      data-tile-id={src}
+    >
       {!blocked ? (
-        <IFrame
-          src={src}
-          title={src}
-          loading="lazy"
-          onError={() => setBlocked(true)}
-        />
+        <>
+          <IFrame
+            src={getYouTubeUrl(src)}
+            title={src}
+            loading="lazy"
+            onError={() => setBlocked(true)}
+          />
+          {/* TODO: 호버 시 전체보기 버튼 표시 - 전체화면 모드가 아닐 때만 */}
+          {isHovered && !isFullscreen && (
+            <FullscreenButton onClick={handleFullscreen}>
+              <FullscreenIcon>⛶</FullscreenIcon>
+              <span>전체보기</span>
+            </FullscreenButton>
+          )}
+        </>
       ) : (
         <Blocked>
           <p>임베트 차단됨</p>
@@ -210,8 +263,6 @@ function Cell({ src, isSingle }: { src: string; isSingle?: boolean }) {
     </Tile>
   );
 }
-
-/* ---------- styles ---------- */
 
 const AppContainer = styled.div`
   height: 100%;
@@ -473,4 +524,55 @@ const Blocked = styled.div`
     font-size: 0.8rem;
     color: #888;
   }
+`;
+
+// TODO: 전체보기 버튼 스타일
+const FullscreenButton = styled.button`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 12px 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: rgba(0, 212, 255, 0.6);
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+  }
+
+  &:active {
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+`;
+
+const FullscreenIcon = styled.span`
+  font-size: 16px;
+  display: inline-block;
 `;

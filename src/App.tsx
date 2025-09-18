@@ -281,6 +281,12 @@ const Header = styled.header`
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
 
+  /* TODO: 100인치 모니터 최적화 - 큰 화면에서 헤더 비율 조정 */
+  @media (min-width: 3840px) {
+    height: 200px;
+    padding: 0 80px;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -319,6 +325,11 @@ const Title = styled.h1`
   -webkit-text-fill-color: transparent;
   background-clip: text;
   letter-spacing: -0.02em;
+
+  /* TODO: 100인치 모니터 최적화 - 큰 화면에서 폰트 크기 증가 */
+  @media (min-width: 3840px) {
+    font-size: 4rem;
+  }
 `;
 
 const Time = styled.div`
@@ -328,6 +339,11 @@ const Time = styled.div`
   text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
+
+  /* TODO: 100인치 모니터 최적화 - 시간 표시 크기 증가 */
+  @media (min-width: 3840px) {
+    font-size: 3rem;
+  }
 `;
 
 const Button = styled.button`
@@ -342,6 +358,13 @@ const Button = styled.button`
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+
+  /* TODO: 100인치 모니터 최적화 - 버튼 크기 증가 */
+  @media (min-width: 3840px) {
+    padding: 2rem 4rem;
+    font-size: 2.5rem;
+    border-radius: 24px;
+  }
 
   &::before {
     content: "";
@@ -548,6 +571,14 @@ const FullscreenButton = styled.button`
   z-index: 10;
   opacity: 0;
   animation: fadeIn 0.3s ease forwards;
+
+  /* TODO: 100인치 모니터 최적화 - 큰 화면에서 버튼 크기 증가 */
+  @media (min-width: 3840px) {
+    padding: 24px 40px;
+    font-size: 24px;
+    border-radius: 20px;
+    border-width: 4px;
+  }
 
   &:hover {
     background: rgba(0, 0, 0, 0.9);
